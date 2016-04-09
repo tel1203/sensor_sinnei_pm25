@@ -29,7 +29,7 @@ class Sensor_pm25
     return (result)
   end
   
-  # STATUS
+  # CMD: Read STATUS
   def send_ST()
     cmd = "\x020130000ST"
     result = make_cmdstr(cmd)
@@ -37,7 +37,7 @@ class Sensor_pm25
     return (result)
   end
   
-  # READ DATA
+  # CMD: Read DATA
   # measurement time (sec)
   # mass concentration (ug/m^3)
   # temprature (Celcius)
@@ -49,7 +49,7 @@ class Sensor_pm25
     return (result[11,16].unpack("SESSS"))
   end
   
-  # Set Measuremet time
+  # CMD: Set Measuremet interval
   # time (min) : "00"|"01"|"05"|"10"|"15"|"30"|"60"
   def send_TS(time)
     cmd = "\x020150000TS"+time
@@ -57,6 +57,7 @@ class Sensor_pm25
     return (result)
   end
   
+  # CMD: Read Measuremet interval
   def send_TR()
     cmd = "\x020130000TR"
     result = make_cmdstr(cmd)
